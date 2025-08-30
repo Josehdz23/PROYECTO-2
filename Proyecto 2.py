@@ -1,9 +1,9 @@
-from unittest import case
-
+from categorias import RegistroCategoria
 from menus import Menu
-from productos import Producto
+from productos import RegistroProductos
 menu = Menu()
-producto = Producto("s", 1,2,3,4)
+categoria = RegistroCategoria()
+producto = RegistroProductos(categoria)
 
 while True:
     try:
@@ -11,10 +11,9 @@ while True:
         op = int(input("Seleccione una opción: "))
         match op:
             case 1:
-                print(producto)
-                pass
+                producto.agregarProducto()
             case 2:
-                pass
+                categoria.agregarCategoria()
             case 3:
                 pass
             case 4:

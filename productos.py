@@ -1,9 +1,8 @@
 class Producto:
-    def __init__(self, nombre, precio, totalCompra, totalVenta, stock):
+    def __init__(self,IDProducto, nombre, precio, stock):
+        self.IDProducto = IDProducto
         self.nombre = nombre
         self.precio = precio
-        self.totalCompra = totalCompra
-        self.totalVenta = totalVenta
         self.stock = stock
 
     def __str__(self):
@@ -11,12 +10,17 @@ class Producto:
         return f"Nombre: {self.nombre} | Precio: {self.precio} | Stock: {self.stock}"
 
 class RegistroProductos:
-    def __init__(self):
+    def __init__(self, registro):
         self.productos = {}
+        self.registro = registro
 
     def agregarProducto(self):
-        while True:
-            try:
-
-            except Exception as ex:
-                print(f"Ha ocurrido un error: {ex}")
+        if self.registro.categorias:
+            while True:
+                try:
+                    id = int(input("Ingrese el ID del producto: "))
+                    if id in self.productos:
+                except Exception as ex:
+                    print(f"Ha ocurrido un error: {ex}")
+        else:
+            print("Debe haber una categoría creada para poder ingresar un producto!! ")
