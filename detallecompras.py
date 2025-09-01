@@ -3,6 +3,7 @@ class Detallecompras:
         self.fechaCaducidad = fechaCaducidad
         self.subtotal = subtotal
         self.cantidad = cantidad
+        self.producto = producto
 
     def __str__(self):
-        return f"Fecha de Caducidad: {self.fechaCaducidad} | Subtotal: {self.subtotal} | Cantidad: {self.cantidad}"
+        return f"Fecha de Caducidad: {self.fechaCaducidad} | Subtotal: {self.subtotal} | Cantidad: {self.cantidad} | Producto: {self.producto} "

@@ -1,3 +1,5 @@
+from productos import *
+
 class Categoria:
     def __init__(self, nombre):
         self.nombre = nombre
@@ -11,9 +13,16 @@ class RegistroCategoria:
         self.categorias = {}
 
     def agregarCategoria(self, producto):
-        self.categorias[1] = {
-            "Categoria": Categoria("s"),
-            "Producto": producto
+        nombre = input("Ingrese el nombre de la categoria: ")
+        id = int(input("Ingrese la id de la categoria: "))
+        c = Categoria(nombre)
+        self.categorias[id] = {
+            "Categoria": c,
+            "Producto": []
         }
+        self.categorias[id]["Producto"].append(producto)
+        self.categorias[id]["Producto"].append(Producto("Hola",2,3))
         for c,d in self.categorias.items():
-            print(c,d["Categoria"],d["Producto"])
+            print(c,d["Categoria"])
+            for d2 in d["Producto"]:
+                print(d2)
