@@ -17,7 +17,6 @@ class DetallesCompras:
         self.detalles = {}
 
     def agregardetalle(self):
-        self.detalles.clear()
         while True:
             try:
                 idProducto = int(input("Ingrese el ID del producto: "))
@@ -47,7 +46,7 @@ class DetallesCompras:
                         while True:
                             fechaCaducidad = input("Ingresa la fecha de caducidad del producto (dd-mm-yyyy): ")
                             try:
-                                fecha_valida = datetime.strptime(fechaCaducidad, "%d-%m-%Y")
+                                fecha_valida = datetime.strptime(fechaCaducidad, "%d-%m-%Y").date()
                                 break
                             except Exception as ex:
                                 print(f"Ha ocurrido un error: {ex}")
