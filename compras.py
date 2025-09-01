@@ -3,7 +3,7 @@ from productos import *
 from categorias import *
 import random
 from datetime import datetime
-detalles = DetallesCompras()
+detalle = DetallesCompras()
 class Compras:
     def __init__(self, fecha, total):
         self.fecha = fecha
@@ -16,14 +16,21 @@ class RealizarCompra:
     def __init__(self):
         self.compra = {}
 
-    def realizarlacompra(self,compras):
+    def realizarlacompra(self):
         while True:
             while True:
                 IDCompra = random.randint(1,1000)
                 if IDCompra not in self.compra.keys():
                     break
             fecha = datetime.now().date()
-            detalles.agregardetalle()
+            agregardetalle = detalle.agregardetalle()
+            total = 0
+            for clave, datos in detalle.detalles.items():
+                total = datos.subtotal + total
+            self.compra[IDCompra] = {
+                "Compra": Compras(fecha, total),
+                "Detalles": agregardetalle
+            }
 
 
 

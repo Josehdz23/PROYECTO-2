@@ -11,7 +11,7 @@ while True:
         op = int(input("Seleccione una opción: "))
         match op:
             case 1:
-                compra.realizarlacompra(categoria)
+                compra.realizarlacompra()
             case 2:
                 pass
             case 3:
