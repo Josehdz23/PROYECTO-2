@@ -25,12 +25,16 @@ class RealizarCompra:
             fecha = datetime.now().date()
             agregardetalle = detalle.agregardetalle()
             total = 0
-            for clave, datos in detalle.detalles.items():
-                total = datos.subtotal + total
-            self.compra[IDCompra] = {
-                "Compra": Compras(fecha, total),
-                "Detalles": agregardetalle
-            }
+            if agregardetalle:
+                for clave, datos in agregardetalle.items():
+                    total = datos["detalle"].subtotal + total
+                self.compra[IDCompra] = {
+                    "Compra": Compras(fecha, total),
+                    "Detalles": agregardetalle
+                }
+            for clave2, datos2 in self.compra.items():
+                print("= = = = = TICKET DE COMPRA = = = = =")
+            break
 
 
 

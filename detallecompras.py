@@ -27,10 +27,6 @@ class DetallesCompras:
                     decision = input("El producto no existe, ¿Desea agregarlo como nuevo? (Si/No): ").lower()
                     if decision == "si":
                         while True:
-                            idProducto = random.randint(1000, 2000)
-                            if idProducto not in prod.productos:
-                                break
-                        while True:
                             nombreProducto = input("Ingrese el nombre del producto: ")
                             if nombreProducto.strip() == "":
                                 print("El nombre no es válido, reintente")
@@ -68,14 +64,12 @@ class DetallesCompras:
                         stock = cantidad
                         prod.productos[idProducto] = Producto(nombreProducto, precio, stock)
                         self.detalles[idProducto] = {
-                            "Producto": Producto(nombreProducto, precio, stock),
-                            "Detalle": Detalles(fecha_valida, subtotal, cantidad)
+                            "producto": Producto(nombreProducto, precio, stock),
+                            "detalle": Detalles(fecha_valida, subtotal, cantidad)
                         }
                 continuar = input("¿Desea continuar? (Si/No): ").lower()
                 if continuar == "no":
                     break
-                else:
-                    print("kasasjdk")
             except Exception as ex:
                 print(f"Ha ocurrido un error: {ex}")
         return self.detalles
