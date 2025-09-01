@@ -3,8 +3,6 @@ from compras import RealizarCompra
 from categorias import RegistroCategoria
 menu = Menu()
 c = RegistroCategoria()
-c.agregarCategoria()
-
 r = RealizarCompra()
 r.realizarlacompra(c)
 

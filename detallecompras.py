@@ -1,5 +1,5 @@
 class Detallecompras:
-    def __init__(self, fechaCaducidad, subtotal, cantidad):
+    def __init__(self, fechaCaducidad, subtotal, cantidad, producto):
         self.fechaCaducidad = fechaCaducidad
         self.subtotal = subtotal
         self.cantidad = cantidad
