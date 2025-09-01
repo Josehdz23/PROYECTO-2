@@ -1,7 +1,9 @@
 from menus import *
 from compras import *
 from categorias import *
+from productos import *
 menu = Menu()
+prod = GestionProductos()
 categoria = RegistroCategoria()
 compra = RealizarCompra()
 
@@ -11,7 +13,13 @@ while True:
         op = int(input("Seleccione una opción: "))
         match op:
             case 1:
-                compra.realizarlacompra()
+                while True:
+                    try:
+                        idEmpleado = int(input("Ingresa el ID Empleado: "))
+                        compra.realizarlacompra(idEmpleado)
+                        break
+                    except Exception as ex:
+                        print(f"Ha ocurrido un error: {ex}")
             case 2:
                 pass
             case 3:
@@ -23,7 +31,7 @@ while True:
             case 6:
                 pass
             case 7:
-                pass
+                prod.MostrarProducto()
             case 8:
                 break
     except Exception as ex:

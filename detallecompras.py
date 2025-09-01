@@ -1,7 +1,5 @@
 from productos import *
-import random
 from datetime import datetime
-prod = Producto("l",1,1)
 
 class Detalles:
     def __init__(self, fechaCaducidad, subtotal, cantidad):
@@ -20,8 +18,29 @@ class DetallesCompras:
         while True:
             try:
                 idProducto = int(input("Ingrese el ID del producto: "))
-                if idProducto in prod.productos:
-                    pass
+                if idProducto in productos:
+                    while True:
+                        fechaCaducidad = input("Ingresa la fecha de caducidad del producto (dd-mm-yyyy): ")
+                        try:
+                            fecha_valida = datetime.strptime(fechaCaducidad, "%d-%m-%Y").date()
+                            break
+                        except Exception as ex:
+                            print(f"Ha ocurrido un error: {ex}")
+                    while True:
+                        try:
+                            cantidad = int(input("Ingrese la cantidad de productos a comprar: "))
+                            if cantidad > 0:
+                                break
+                            else:
+                                print("La cantidad no es válida, reintente")
+                        except Exception as ex:
+                            print(f"Ha ocurrido un error: {ex}")
+                    subtotal = cantidad * productos[idProducto].precio
+                    productos[idProducto].stock += cantidad
+                    self.detalles[idProducto] = {
+                        "producto": productos[idProducto],
+                        "detalle": Detalles(fecha_valida, subtotal, cantidad)
+                    }
                 else:
                     decision = input("El producto no existe, ¿Desea agregarlo como nuevo? (Si/No): ").lower()
                     if decision == "si":
@@ -30,7 +49,7 @@ class DetallesCompras:
                             if nombreProducto.strip() == "":
                                 print("El nombre no es válido, reintente")
                             else:
-                                if nombreProducto in prod.productos:
+                                if nombreProducto in productos:
                                     print("El nombre del producto ya existe, reintente")
                                 else:
                                     break
@@ -59,11 +78,20 @@ class DetallesCompras:
                                     print("La cantidad no es válida, reintente")
                             except Exception as ex:
                                 print(f"Ha ocurrido un error: {ex}")
+                        while True:
+                            catego = input("Ingrese la categoria del producto: ")
+                            if catego.strip() == "":
+                                print("El nombre de la categoria no es válido, reintente")
+                            else:
+                                if catego in productos:
+                                    break
                         subtotal = cantidad * precio
                         stock = cantidad
-                        prod.productos[idProducto] = Producto(nombreProducto, precio, stock)
+                        nuevo = Producto(nombreProducto, precio, stock)
+                        gestion = GestionProductos()
+                        gestion.agregarProducto(nuevo, idProducto)
                         self.detalles[idProducto] = {
-                            "producto": Producto(nombreProducto, precio, stock),
+                            "producto": nuevo,
                             "detalle": Detalles(fecha_valida, subtotal, cantidad)
                         }
                 continuar = input("¿Desea continuar? (Si/No): ").lower()
