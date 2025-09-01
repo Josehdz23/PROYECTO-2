@@ -1,5 +1,7 @@
 from productos import *
 from datetime import datetime
+from categorias import *
+import random
 
 class Detalles:
     def __init__(self, fechaCaducidad, subtotal, cantidad):
@@ -78,16 +80,18 @@ class DetallesCompras:
                                     print("La cantidad no es válida, reintente")
                             except Exception as ex:
                                 print(f"Ha ocurrido un error: {ex}")
-                        while True:
-                            catego = input("Ingrese la categoria del producto: ")
-                            if catego.strip() == "":
-                                print("El nombre de la categoria no es válido, reintente")
-                            else:
-                                if catego in productos: #SEGUIR AQUÍ BRO
-                                    break
-                        subtotal = cantidad * precio
                         stock = cantidad
-                        nuevo = Producto(nombreProducto, precio, stock)
+                        while True:
+                            try:
+                                cat = RegistroCategoria()
+                                codcat = int(input("Ingrese el codigo de la categoria: "))
+                                p = Producto(nombreProducto, precio, stock, "s")
+                                nombrecat = cat.agregarCategoria(codcat, p, cantidad)
+                                break
+                            except Exception as ex:
+                                print(f"Ha ocurrido un error: {ex}")
+                        nuevo = Producto(nombreProducto, precio, stock, nombrecat)
+                        subtotal = cantidad * precio
                         gestion = GestionProductos()
                         gestion.agregarProducto(nuevo, idProducto)
                         self.detalles[idProducto] = {

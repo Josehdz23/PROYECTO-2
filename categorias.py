@@ -1,5 +1,4 @@
-from productos import *
-
+categorias = {}
 class Categoria:
     def __init__(self, nombre):
         self.nombre = nombre
@@ -9,20 +8,22 @@ class Categoria:
 
 
 class RegistroCategoria:
-    def __init__(self):
-        self.categorias = {}
+    def agregarCategoria(self,id,producto,cantidad):
+        if id in categorias:
+            for obj in categorias[id]["productos"]:
+                if obj.nombre == producto.nombre:
+                    obj.stock += cantidad
+                    return categorias[id]["nombre"].nombre
+        else:
+            nombre = input("La categoria no existía pero se creará, ingrese el nombre del categoría: ")
+            categorias[id] = {
+                "nombre": Categoria(nombre),
+                "productos": [producto]
+            }
+            return nombre
+    def mostrarCategorias(self):
+        for clave, datos in categorias.items():
+            print(f"IDCategoria: {clave}")
+            for datos2 in datos["productos"]:
+                print(f"- {datos2}")
 
-    def agregarCategoria(self, producto):
-        nombre = input("Ingrese el nombre de la categoria: ")
-        id = int(input("Ingrese la id de la categoria: "))
-        c = Categoria(nombre)
-        self.categorias[id] = {
-            "Categoria": c,
-            "Producto": []
-        }
-        self.categorias[id]["Producto"].append(producto)
-        self.categorias[id]["Producto"].append(Producto("Hola",2,3))
-        for c,d in self.categorias.items():
-            print(c,d["Categoria"])
-            for d2 in d["Producto"]:
-                print(d2)

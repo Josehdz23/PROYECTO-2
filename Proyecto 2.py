@@ -29,7 +29,7 @@ while True:
             case 5:
                 pass
             case 6:
-                pass
+                categoria.mostrarCategorias()
             case 7:
                 prod.MostrarProducto()
             case 8:
