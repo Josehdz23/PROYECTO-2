@@ -83,7 +83,7 @@ class DetallesCompras:
                             if catego.strip() == "":
                                 print("El nombre de la categoria no es válido, reintente")
                             else:
-                                if catego in productos:
+                                if catego in productos: #SEGUIR AQUÍ BRO
                                     break
                         subtotal = cantidad * precio
                         stock = cantidad
