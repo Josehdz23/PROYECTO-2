@@ -1,9 +1,5 @@
-from categorias import RegistroCategoria
 from menus import Menu
-from productos import RegistroProductos
 menu = Menu()
-categoria = RegistroCategoria()
-producto = RegistroProductos(categoria)
 
 while True:
     try:
@@ -11,9 +7,9 @@ while True:
         op = int(input("Seleccione una opción: "))
         match op:
             case 1:
-                producto.agregarProducto()
+                pass
             case 2:
-                categoria.agregarCategoria()
+                pass
             case 3:
                 pass
             case 4:
