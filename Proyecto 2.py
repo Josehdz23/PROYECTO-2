@@ -1,18 +1,17 @@
-from menus import Menu
-from compras import RealizarCompra
-from categorias import RegistroCategoria
+from menus import *
+from compras import *
+from categorias import *
 menu = Menu()
-c = RegistroCategoria()
-r = RealizarCompra()
-r.realizarlacompra(c)
+categoria = RegistroCategoria()
+compra = RealizarCompra()
 
-"""while True:
+while True:
     try:
         print(menu)
         op = int(input("Seleccione una opción: "))
         match op:
             case 1:
-                pass
+                compra.realizarlacompra(categoria)
             case 2:
                 pass
             case 3:
@@ -28,5 +27,5 @@ r.realizarlacompra(c)
             case 8:
                 break
     except Exception as ex:
-        print(f"Ha ocurrido un error: {ex}, vuelva a intentarlo")"""
+        print(f"Ha ocurrido un error: {ex}, vuelva a intentarlo")
 

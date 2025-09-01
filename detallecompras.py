@@ -1,4 +1,7 @@
-class Detallecompras:
+from productos import *
+from categorias import *
+
+class Detalles:
     def __init__(self, fechaCaducidad, subtotal, cantidad, producto):
         self.fechaCaducidad = fechaCaducidad
         self.subtotal = subtotal
@@ -7,3 +10,10 @@ class Detallecompras:
 
     def __str__(self):
         return f"Fecha de Caducidad: {self.fechaCaducidad} | Subtotal: {self.subtotal} | Cantidad: {self.cantidad} | Producto: {self.producto} "
+
+class DetallesCompras:
+    def __init__(self):
+        self.detalles = {}
+
+    def agregardetalle(self):
+        pass
