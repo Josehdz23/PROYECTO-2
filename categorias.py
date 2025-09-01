@@ -1,12 +1,13 @@
+from unicodedata import category
+
 class Categoria:
-    def __init__(self,IDCategoria, nombre):
-        self.IDCategoria = IDCategoria
+    def __init__(self, nombre):
         self.nombre = nombre
-        self.categorias = {}
+
 
 class RegistroCategoria:
     def __init__(self):
         self.categorias = {}
 
     def agregarCategoria(self):
-        pass
+        self.categorias[1] = Categoria("Categoria 1")

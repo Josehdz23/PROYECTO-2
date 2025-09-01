@@ -1,7 +1,14 @@
 from menus import Menu
+from compras import RealizarCompra
+from categorias import RegistroCategoria
 menu = Menu()
+c = RegistroCategoria()
+c.agregarCategoria()
 
-while True:
+r = RealizarCompra()
+r.realizarlacompra(c)
+
+"""while True:
     try:
         print(menu)
         op = int(input("Seleccione una opción: "))
@@ -23,5 +30,5 @@ while True:
             case 8:
                 break
     except Exception as ex:
-        print(f"Ha ocurrido un error: {ex}, vuelva a intentarlo")
+        print(f"Ha ocurrido un error: {ex}, vuelva a intentarlo")"""
 
