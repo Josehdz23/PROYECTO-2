@@ -17,7 +17,6 @@ class RealizarCompra:
         self.compra = {}
 
     def realizarlacompra(self, id):
-
         if empleados:
             if empleados[id].puesto == "JEFE":
                 while True:
