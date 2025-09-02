@@ -19,35 +19,44 @@ class RealizarCompra:
 
     def realizarlacompra(self, id):
         if empleados:
-            if empleados[id].puesto == "JEFE":
-                while True:
-                    while True:
-                        IDCompra = random.randint(1, 1000)
-                        if IDCompra not in self.compra.keys():
-                            break
-                    fecha = datetime.now().date()
-                    agregardetalle = detalle.agregardetalle()
-                    total = 0
-                    if agregardetalle:
-                        for clave, datos in agregardetalle.items():
-                            total = datos["detalle"].subtotal + total
-                        self.compra[IDCompra] = {
-                            "Compra": Compras(fecha, total),
-                            "Empleado": empleados[id],
-                            "Detalles": deepcopy(agregardetalle)
-                        }
-                    for clave2, datos2 in self.compra.items():
-                        print("\n= = = = = TICKET DE COMPRA = = = = =")
-                        print(f"ID Compra: {clave2}")
-                        print(f"{datos2['Compra']}")
-                        print(f"IDEmpleado: {id} {datos2['Empleado']}")
-                        for idprod, detalledic in datos2["Detalles"].items():
-                            print(f"-ID:{idprod} {detalledic['producto']}")
-                            print(f"- {detalledic['detalle']}")
-                            print(f"- {detalledic['proveedor']}")
-                    detalle.detalles.clear()
-                    break
+            if id not in empleados:
+                print("No existe el empleado")
             else:
-                print("No tiene los permisos correspondientes para comprar productos para la tienda")
+                if empleados[id].puesto == "JEFE":
+                    while True:
+                        while True:
+                            IDCompra = random.randint(1, 1000)
+                            if IDCompra not in self.compra.keys():
+                                break
+                        fecha = datetime.now().date()
+                        agregardetalle = detalle.agregardetalle()
+                        total = 0
+                        if agregardetalle:
+                            for clave, datos in agregardetalle.items():
+                                total = datos["detalle"].subtotal + total
+                            self.compra[IDCompra] = {
+                                "Compra": Compras(fecha, total),
+                                "Empleado": empleados[id],
+                                "Detalles": deepcopy(agregardetalle)
+                            }
+                            comprastotales[IDCompra] = {
+                                "Compra": Compras(fecha, total),
+                                "Empleado": empleados[id],
+                                "Detalles": deepcopy(agregardetalle)
+                            }
+                        for clave2, datos2 in self.compra.items():
+                            print("\n= = = = = TICKET DE COMPRA = = = = =")
+                            print(f"ID Compra: {clave2}")
+                            print(f"{datos2['Compra']}")
+                            print(f"IDEmpleado: {id} {datos2['Empleado']}")
+                            for idprod, detalledic in datos2["Detalles"].items():
+                                print(f"-IDProducto:{idprod} {detalledic['producto']}")
+                                print(f"-Detalles: {detalledic['detalle']}")
+                                print(f"-Proveedor: {detalledic['proveedor']}")
+                        detalle.detalles.clear()
+                        self.compra.clear()
+                        break
+                elif empleados[id].puesto == "Empleado":
+                    print("No tiene los permisos correspondientes para comprar productos para la tienda")
         else:
             print("No hay empleados, registrados")

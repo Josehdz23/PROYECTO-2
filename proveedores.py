@@ -1,3 +1,4 @@
+import random
 proveedores = {}
 class Proveedores:
     def __init__(self, nombre, direccion, telefono, correo, empresa):
@@ -12,5 +13,10 @@ class Proveedores:
 
 class GestionProveedores:
     def agregarProveedor(self, proveedor):
+        idProv = random.randint(2000, 3000)
         if proveedor not in proveedores:
-            pass
+            proveedores[idProv] = proveedor
+
+    def mostrarProveedores(self):
+        for clave, datos in proveedores.items():
+            print(clave, datos)

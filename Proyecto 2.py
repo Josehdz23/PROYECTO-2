@@ -2,6 +2,8 @@ from menus import *
 from compras import *
 from categorias import *
 from productos import *
+from proveedores import *
+prov = GestionProveedores()
 menu = Menu()
 prod = GestionProductos()
 categoria = RegistroCategoria()
@@ -14,12 +16,10 @@ while True:
         match op:
             case 1:
                 while True:
-                    try:
-                        idEmpleado = int(input("Ingresa el ID Empleado: "))
+                    idEmpleado = int(input("Ingresa el ID Empleado: "))
+                    if idEmpleado > 0:
                         compra.realizarlacompra(idEmpleado)
-                        break
-                    except Exception as ex:
-                        print(f"Ha ocurrido un error: {ex}")
+                    break
             case 2:
                 pass
             case 3:
@@ -33,6 +33,16 @@ while True:
             case 7:
                 prod.MostrarProducto()
             case 8:
+                pass
+            case 9:
+                prov.mostrarProveedores()
+            case 10:
+                pass
+            case 11:
+                pass
+            case 12:
+                pass
+            case 13:
                 break
     except Exception as ex:
         print(f"Ha ocurrido un error: {ex}, vuelva a intentarlo")
