@@ -2,7 +2,7 @@ from productos import *
 from proveedores import *
 from datetime import datetime
 from categorias import *
-import random
+gest = GestionProveedores()
 
 class Detalles:
     def __init__(self, fechaCaducidad, subtotal, cantidad):
@@ -128,6 +128,7 @@ class DetallesCompras:
                         subtotal = cantidad * precio
                         gestion = GestionProductos()
                         gestion.agregarProducto(nuevo, idProducto)
+                        gest.agregarProveedor(Proveedores(nombreProveedor,direccion,telefono,correo,empresa))
                         self.detalles[idProducto] = {
                             "producto": nuevo,
                             "detalle": Detalles(fecha_valida, subtotal, cantidad),

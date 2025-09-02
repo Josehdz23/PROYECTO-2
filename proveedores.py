@@ -12,4 +12,5 @@ class Proveedores:
 
 class GestionProveedores:
     def agregarProveedor(self, proveedor):
-        pass
+        if proveedor not in proveedores:
+            pass
