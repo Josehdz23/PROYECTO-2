@@ -4,6 +4,7 @@ from copy import deepcopy
 import random
 from datetime import datetime
 detalle = DetallesCompras()
+comprastotales = {}
 class Compras:
     def __init__(self, fecha, total):
         self.fecha = fecha
@@ -32,15 +33,18 @@ class RealizarCompra:
                             total = datos["detalle"].subtotal + total
                         self.compra[IDCompra] = {
                             "Compra": Compras(fecha, total),
+                            "Empleado": empleados[id],
                             "Detalles": deepcopy(agregardetalle)
                         }
                     for clave2, datos2 in self.compra.items():
                         print("\n= = = = = TICKET DE COMPRA = = = = =")
                         print(f"ID Compra: {clave2}")
                         print(f"{datos2['Compra']}")
+                        print(f"IDEmpleado: {id} {datos2['Empleado']}")
                         for idprod, detalledic in datos2["Detalles"].items():
                             print(f"-ID:{idprod} {detalledic['producto']}")
                             print(f"- {detalledic['detalle']}")
+                            print(f"- {detalledic['proveedor']}")
                     detalle.detalles.clear()
                     break
             else:

@@ -1,3 +1,4 @@
+proveedores = {}
 class Proveedores:
     def __init__(self, nombre, direccion, telefono, correo, empresa):
         self.nombre = nombre
@@ -8,3 +9,7 @@ class Proveedores:
 
     def __str__(self):
         return f"Nombre: {self.nombre} | Direccion: {self.direccion} | Telefono: {self.telefono} | Correo: {self.correo} | Empresa: {self.empresa}"
+
+class GestionProveedores:
+    def agregarProveedor(self, proveedor):
+        pass

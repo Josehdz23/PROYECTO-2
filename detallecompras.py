@@ -1,4 +1,5 @@
 from productos import *
+from proveedores import *
 from datetime import datetime
 from categorias import *
 import random
@@ -90,13 +91,47 @@ class DetallesCompras:
                                 break
                             except Exception as ex:
                                 print(f"Ha ocurrido un error: {ex}")
+                        while True:
+                            nombreProveedor = input("Ingrese el nombre del proveedor: ")
+                            if nombreProveedor.strip() == "":
+                                print("El nombre no es válido, reintente")
+                            else:
+                                break
+                        while True:
+                            direccion = input("Ingrese la dirección de la empresa del proveedor")
+                            if direccion.strip() == "":
+                                print("El nombre no es válido, reintente")
+                            else:
+                                break
+                        while True:
+                            try:
+                                telefono = int(input("Ingrese el telefono del proveedor: "))
+                                if len(str(telefono)) == 8:
+                                    break
+                                else:
+                                    print("Numero invalido, reintente")
+                            except Exception as ex:
+                                print(f"Ha ocurrido un error: {ex}")
+                        while True:
+                            correo = input("Ingrese el correo del proveedor: ")
+                            if correo.strip() == "":
+                                print("El correo no es válido, reintente")
+                            else:
+                                break
+                        while True:
+                            empresa = input("Ingrese el nombre de la empresa del proveedor: ")
+                            if empresa.strip() == "":
+                                print("El nombre de la empresa no es válido, reintente")
+                            else:
+                                break
                         nuevo = Producto(nombreProducto, precio, stock, nombrecat)
                         subtotal = cantidad * precio
                         gestion = GestionProductos()
                         gestion.agregarProducto(nuevo, idProducto)
                         self.detalles[idProducto] = {
                             "producto": nuevo,
-                            "detalle": Detalles(fecha_valida, subtotal, cantidad)
+                            "detalle": Detalles(fecha_valida, subtotal, cantidad),
+                            "proveedor": Proveedores(nombreProveedor, direccion, telefono, correo, empresa)
                         }
                 continuar = input("¿Desea continuar? (Si/No): ").lower()
                 if continuar == "no":
