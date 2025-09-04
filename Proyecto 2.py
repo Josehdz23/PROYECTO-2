@@ -3,6 +3,8 @@ from compras import *
 from categorias import *
 from productos import *
 from proveedores import *
+from empleados import *
+emp = GestionEmpleados()
 prov = GestionProveedores()
 menu = Menu()
 prod = GestionProductos()
@@ -39,11 +41,14 @@ while True:
             case 10:
                 pass
             case 11:
-                pass
+                compra.mostrarComprasRealizadas()
             case 12:
                 pass
             case 13:
-                break
+                pass
+            case 14:
+                emp.mostrarEmpleados()
+            case _:
+                print("Esa opción no existe, reintente")
     except Exception as ex:
         print(f"Ha ocurrido un error: {ex}, vuelva a intentarlo")
-

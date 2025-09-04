@@ -16,6 +16,6 @@ class GestionEmpleados:
 
     def mostrarEmpleados(self):
         for IDEmpleado, empleado in empleados.items():
-            print(IDEmpleado,empleado)
+            print(f"IDEmpleado: {IDEmpleado} | Empleado: {empleado}")
 empleados[123] = Empleados("José","Mi casa",54563974,"Hola@gmail.com","JEFE")
 empleados[321] = Empleados("Juan","Su casa",12345678,"Adios@gmail.com","Empleado")

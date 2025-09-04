@@ -19,4 +19,4 @@ class GestionProveedores:
 
     def mostrarProveedores(self):
         for clave, datos in proveedores.items():
-            print(clave, datos)
+            print(f"IDProveedor: {clave} | Datos: {datos}")

@@ -7,4 +7,3 @@ class Clientes:
 
     def __str__(self):
         return f"Nombre: {self.nombre} | Direccion: {self.direccion} | Telefono: {self.telefono} | Correo: {self.correo}"
-

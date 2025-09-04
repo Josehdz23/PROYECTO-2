@@ -38,11 +38,58 @@ class DetallesCompras:
                                 print("La cantidad no es válida, reintente")
                         except Exception as ex:
                             print(f"Ha ocurrido un error: {ex}")
+                    while True:
+                        try:
+                            gest.mostrarProveedores()
+                            idProv = int(input("Ingrese el ID del proveedor, si no existe se creará uno nuevo: "))
+                            if idProv in proveedores:
+                                proveedor = proveedores[idProv]
+                                break
+                            else:
+                                while True:
+                                    nombreProveedor = input("No existe el proveedor pero se creará, Ingrese el nombre del proveedor: ")
+                                    if nombreProveedor.strip() == "":
+                                        print("El nombre no es válido, reintente")
+                                    else:
+                                        break
+                                while True:
+                                    direccion = input("Ingrese la dirección de la empresa del proveedor")
+                                    if direccion.strip() == "":
+                                        print("El nombre no es válido, reintente")
+                                    else:
+                                        break
+                                while True:
+                                    try:
+                                        telefono = int(input("Ingrese el telefono del proveedor: "))
+                                        if len(str(telefono)) == 8:
+                                            break
+                                        else:
+                                            print("Numero invalido, reintente")
+                                    except Exception as ex:
+                                        print(f"Ha ocurrido un error: {ex}")
+                                while True:
+                                    correo = input("Ingrese el correo del proveedor: ")
+                                    if correo.strip() == "":
+                                        print("El correo no es válido, reintente")
+                                    else:
+                                        break
+                                while True:
+                                    empresa = input("Ingrese el nombre de la empresa del proveedor: ")
+                                    if empresa.strip() == "":
+                                        print("El nombre de la empresa no es válido, reintente")
+                                    else:
+                                        break
+                                proveedor = Proveedores(nombreProveedor, direccion, telefono, correo, empresa)
+                                gest.agregarProveedor(proveedor)
+                                break
+                        except Exception as ex:
+                            print(f"Ha ocurrido un error: {ex}")
                     subtotal = cantidad * productos[idProducto].precio
                     productos[idProducto].stock += cantidad
                     self.detalles[idProducto] = {
                         "producto": productos[idProducto],
-                        "detalle": Detalles(fecha_valida, subtotal, cantidad)
+                        "detalle": Detalles(fecha_valida, subtotal, cantidad),
+                        "proveedor": proveedor
                     }
                 else:
                     decision = input("El producto no existe, ¿Desea agregarlo como nuevo? (Si/No): ").lower()
@@ -140,7 +187,3 @@ class DetallesCompras:
             except Exception as ex:
                 print(f"Ha ocurrido un error: {ex}")
         return self.detalles
-
-
-
-

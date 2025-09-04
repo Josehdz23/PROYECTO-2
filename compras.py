@@ -37,18 +37,20 @@ class RealizarCompra:
                             self.compra[IDCompra] = {
                                 "Compra": Compras(fecha, total),
                                 "Empleado": empleados[id],
+                                "IDEmpleado": id,
                                 "Detalles": deepcopy(agregardetalle)
                             }
                             comprastotales[IDCompra] = {
                                 "Compra": Compras(fecha, total),
                                 "Empleado": empleados[id],
+                                "IDEmpleado": id,
                                 "Detalles": deepcopy(agregardetalle)
                             }
                         for clave2, datos2 in self.compra.items():
                             print("\n= = = = = TICKET DE COMPRA = = = = =")
                             print(f"ID Compra: {clave2}")
                             print(f"{datos2['Compra']}")
-                            print(f"IDEmpleado: {id} {datos2['Empleado']}")
+                            print(f"IDEmpleado: {datos2["IDEmpleado"]} {datos2['Empleado']}")
                             for idprod, detalledic in datos2["Detalles"].items():
                                 print(f"-IDProducto:{idprod} {detalledic['producto']}")
                                 print(f"-Detalles: {detalledic['detalle']}")
@@ -60,3 +62,17 @@ class RealizarCompra:
                     print("No tiene los permisos correspondientes para comprar productos para la tienda")
         else:
             print("No hay empleados, registrados")
+
+    def mostrarComprasRealizadas(self):
+        if comprastotales:
+            for clave2, datos2 in comprastotales.items():
+                print("\n= = = = = TICKET DE COMPRA = = = = =")
+                print(f"ID Compra: {clave2}")
+                print(f"{datos2['Compra']}")
+                print(f"IDEmpleado: {datos2["IDEmpleado"]} {datos2['Empleado']}") # TERMINANDO DE DESPLEGAR
+                for idprod, detalledic in datos2["Detalles"].items():
+                    print(f"-IDProducto:{idprod} {detalledic['producto']}")
+                    print(f"-Detalles: {detalledic['detalle']}")
+                    print(f"-Proveedor: {detalledic['proveedor']}")
+        else:
+            print("No se ha realizado ninguna compra")
